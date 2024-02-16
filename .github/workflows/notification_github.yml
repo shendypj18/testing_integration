@@ -11,4 +11,4 @@ jobs:
     steps:
     - name: Hit Endpoint
       run: |
-        curl -X POST -H "Content-Type: application/json" -d '{"user": "${{github.actor}}", "message": "${{github.head_ref}}"}' https://2615-2001-448a-1149-1704-40b3-5375-a96c-9ed8.ngrok-free.app/api/git_webhook/v1/post_notification
+        curl -X POST -H "Content-Type: application/json" -d '{"user": github.actor, "message": github.event_name}' https://9cec-2001-448a-1149-1704-d04-c494-50fa-eb30.ngrok-free.app/api/git_webhook/v1/post_notification
