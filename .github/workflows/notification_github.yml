@@ -13,8 +13,11 @@ jobs:
   hit_endpoint_job:
     runs-on: ubuntu-latest  
 
+    environment:
+      name: tes-satu
+
     steps:
     - name: Check if Pull Request is Merged
       if: github.event.pull_request.merged == true
       run: |
-        curl -X POST -H "Content-Type: application/json" -d '{"user": "${{ github.actor }}", "message": "${{ github.event.pull_request.title }}"}' $URL_ODOO
+        curl -X POST -H "Content-Type: application/json" -d '{"user": "${{ github.actor }}", "message": "${{ github.event.pull_request.title }}"}' ${{ vars.URL_ODOO }}
