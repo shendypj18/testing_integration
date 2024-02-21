@@ -14,4 +14,4 @@ jobs:
     - name: Check if Pull Request is Merged
       if: github.event.pull_request.merged == true
       run: |
-        curl -X POST -H "Content-Type: application/json" -d '{"user": "${{ github.actor }}", "message": "Pull request merged: ${{ github.event.pull_request.title }}"}' https://2615-2001-448a-1149-1704-40b3-5375-a96c-9ed8.ngrok-free.app/api/git_webhook/v1/post_notification
+        curl -X POST -H "Content-Type: application/json" -d '{"user": "${{ github.actor }}", "message": "${{ github.event.pull_request.title }}"}' ${{ secrets.url_odoo }}
