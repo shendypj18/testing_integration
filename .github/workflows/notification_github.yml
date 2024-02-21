@@ -5,6 +5,9 @@ on:
     types: [closed]
     branches:
       - master
+env:
+  # Setting an environment variable with the value of a configuration variable
+  URL_ODOO: ${{ vars.URL_ODOO }}
 
 jobs:
   hit_endpoint_job:
@@ -15,5 +18,3 @@ jobs:
       if: github.event.pull_request.merged == true
       run: |
         curl -X POST -H "Content-Type: application/json" -d '{"user": "${{ github.actor }}", "message": "${{ github.event.pull_request.title }}"}' $URL_ODOO
-      env:
-        URL_ODOO: ${{ secrets.URL_ODOO }}
