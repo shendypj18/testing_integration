@@ -14,4 +14,6 @@ jobs:
     - name: Check if Pull Request is Merged
       if: github.event.pull_request.merged == true
       run: |
-        curl -X POST -H "Content-Type: application/json" -d '{"user": "${{ github.actor }}", "message": "${{ github.event.pull_request.title }}"}' ${{ secrets.URL_ODOO }}
+        curl -X POST -H "Content-Type: application/json" -d '{"user": "${{ github.actor }}", "message": "${{ github.event.pull_request.title }}"}' $URL_ODOO
+      env:
+        URL_ODOO: ${{ secrets.URL_ODOO }}
